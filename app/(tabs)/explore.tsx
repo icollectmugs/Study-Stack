@@ -1,5 +1,3 @@
-// explore.tsx ← Second tab screen
-
 import { Image } from 'expo-image';
 import { Platform, StyleSheet } from 'react-native';
 
