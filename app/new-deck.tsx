@@ -3,6 +3,7 @@ import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { useState } from 'react';
 import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { db } from '../lib/firebase';
+import { randomColor } from '@/utils/colors';
 
 export default function NewDeck() {
     const [title, setTitle] = useState('');
@@ -22,8 +23,10 @@ export default function NewDeck() {
         try {
             await addDoc(collection(db, 'decks'), {
                 title: title.trim(),
-                createdAt: Timestamp.now(),
                 cards: [],
+                color: randomColor(),
+                createdAt: Date.now(),
+                lastStudied: null,
             });
 
             setTitle('');
